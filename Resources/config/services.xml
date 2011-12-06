@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="benji07.oauth.manager.class">Benji07\Bundle\OAuthBundle\OAuthManager</parameter>
+    </parameters>
+    
+    <services>
+        <service id="benji07.oauth.manager" class="%benji07.oauth.manager.class%">
+            <argument type="service" id="buzz_browser" />
+        </service>
+
+        <service id="buzz_browser" class="Buzz\Browser"></service>
+
+        <service id="benji07.oauth.provider.github" class="Benji07\Bundle\OAuthBundle\GithubProvider">
+            <tag name="benji07.oauth.provider"/>
+            <argument>6d232f2c63e383cc52a0</argument>
+            <argument>51a0f83bb91d6e60cac83bae35974f825fb8b5df</argument>
+        </service>
+
+        <service id="benji07.oauth.provider.facebook" class="Benji07\Bundle\OAuthBundle\FacebookProvider">
+            <tag name="benji07.oauth.provider"/>
+            <argument>218829118177523</argument>
+            <argument>56ef347a23e57c6550dea755396cc5e9</argument>
+        </service>
+    </services>
+    
+</container>
