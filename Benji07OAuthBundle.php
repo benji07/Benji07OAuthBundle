@@ -13,6 +13,11 @@ use Benji07\Bundle\OAuthBundle\DependencyInjection\Compiler\AddProvidersPass;
  */
 class Benji07OAuthBundle extends Bundle
 {
+    /**
+     * build container
+     *
+     * @param ContainerBuilder $container the container
+     */
     public function build(ContainerBuilder $container)
     {
         parent::build($container);

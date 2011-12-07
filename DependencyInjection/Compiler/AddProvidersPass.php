@@ -6,8 +6,16 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\Reference;
 
+/**
+ * Add Provider pass
+ */
 class AddProvidersPass implements CompilerPassInterface
 {
+    /**
+     * Process container
+     *
+     * @param ContainerBuilder $container the container
+     */
     public function process(ContainerBuilder $container)
     {
         if (!$container->hasDefinition('benji07.oauth.manager')) {

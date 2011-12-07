@@ -6,19 +6,35 @@ use Symfony\Component\HttpFoundation\Request;
 
 use Buzz\Browser;
 
-class OAuth2Provider extends OAuthProvider
+/**
+ * OAuth 2.0 Provider
+ */
+abstract class OAuth2Provider extends OAuthProvider
 {
     protected $scope;
 
     protected $authorizeUri;
 
     protected $accessTokenUri;
-    
+
+    /**
+     * Set scope
+     *
+     * @param string $scope the user scope
+     */
     public function setScope($scope)
     {
         $this->scope = $scope;
     }
 
+    /**
+     * Get Authorize uri
+     *
+     * @param Request $request     the request
+     * @param string  $redirectUri the uri
+     *
+     * @return string
+     */
     public function getAuthorizeUri(Request $request, $redirectUri)
     {
         return $this->authorizeUri.'?'.http_build_query(array(
@@ -27,6 +43,14 @@ class OAuth2Provider extends OAuthProvider
             'scope' => $this->scope));
     }
 
+    /**
+     * Get Access Token
+     *
+     * @param Request $request     the request
+     * @param string  $redirectUri the uri
+     *
+     * @return string|array
+     */
     public function getAccessToken(Request $request, $redirectUri)
     {
         if ($request->query->has('error')) {

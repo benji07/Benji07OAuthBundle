@@ -106,7 +106,7 @@ class AuthController extends Controller
         try {
             $token = $provider->getAccessToken($this->getRequest(), $redirect);
 
-            $this->get('benji07.oauth.manager')->link($provider, $user, $token);
+            $this->get('benji07.oauth.manager')->getUserManager()->link($provider, $user, $token);
 
             $this->getRequest()->getSession()->setFlash('success', strtr('Your %provider% is now linked', array('%provider' => $name)));
 
@@ -139,7 +139,7 @@ class AuthController extends Controller
         $user = $this->getUser();
 
         try {
-            $this->get('benji07.oauth.manager')->unlink($provider, $user);
+            $this->get('benji07.oauth.manager')->getUserManager()->unlink($provider, $user);
 
             $this->getRequest()->getSession()->setFlash('success', 'We unlinked successfully your %provider% in account', array('%provider%' => $name));
 
