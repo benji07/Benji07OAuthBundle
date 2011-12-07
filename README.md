@@ -1,6 +1,16 @@
-# Bundle OAuth
+# Bundle Benji07OAuthBundle
 
-## Step 1: Download Benji07OAuthBundle
+This bundles is **Work in progress**
+
+Currently this bundle only Support OAuth2.0
+
+With this bundle, your user can login, link and unlink they account.
+
+This bundle is only compatible with Doctrine ORM
+
+## Installation
+
+### Step 1: Download Benji07OAuthBundle
 
 Add the following lines in your `deps` file:
 
@@ -21,6 +31,7 @@ $ php bin/vendors install
 Add the `Benji07` namespace to your autoloader:
 
 ``` php
+<?php
 // app/autoload.php
 
 $loader->registerNamespaces(array(
@@ -32,18 +43,28 @@ $loader->registerNamespaces(array(
 ### Step 3: Enable the bundle
 
 ```php
+<?php
 // app/AppKernel.php
 
 public function registerBundles()
 {
     $bundles = array(
         // ...
-        new FOS\UserBundle\FOSUserBundle(),
+        new Benji07\Bundle\OAuthBundle\Benji07OAuthBundle(),
     );
 }
 ```
 ### Step 4: Add providers class
 
+Examples providers are available in bundle Benji07OAuthGithubBundle, Benji07OAuthFacebookBundle and Benji07OAuthTwiterBundle
+
 ### Step 5: Configure your application's security.yml
 
 ### Step 6: Configure the Benji07OAuthBundle
+
+```
+benji07_o_auth:
+    user_manager: benji07.oauth.usermanager.doctrine_orm
+    user_manager_options:
+        class: Acme\UserBundle\Entity\User
+```
