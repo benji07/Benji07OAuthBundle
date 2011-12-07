@@ -53,4 +53,17 @@ abstract class OAuth1aProvider extends OAuthProvider
     public function getRequestToken($redirectUri)
     {
     }
+
+    /**
+     * Get columns to persist in the user account
+     *
+     * @return array
+     */
+    public function getColumns()
+    {
+        return array(
+            $this->getIdColumn(),
+            $this->getName() . '_secret'
+        );
+    }
 }

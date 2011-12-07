@@ -65,4 +65,24 @@ abstract class OAuthProvider
      * @return string
      */
     abstract public function getName();
+
+    /**
+     * Get Id Column
+     *
+     * @return string
+     */
+    public function getIdColumn()
+    {
+        return $this->getName() . '_token';
+    }
+
+    /**
+     * Get columns to persist in the user account
+     *
+     * @return array
+     */
+    public function getColumns()
+    {
+        return array($this->getIdColumn());
+    }
 }

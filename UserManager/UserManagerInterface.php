@@ -1,6 +1,6 @@
 <?php
 
-namespace Benji07\Bundle\OAuthBundle;
+namespace Benji07\Bundle\OAuthBundle\UserManager;
 
 use Benji07\Bundle\OAuthBundle\Provider\OAuthProvider;
 
