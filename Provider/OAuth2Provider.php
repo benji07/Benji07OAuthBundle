@@ -1,42 +1,25 @@
 <?php
 
-namespace Benji07\Bundle\OAuthBundle;
+namespace Benji07\Bundle\OAuthBundle\Provider;
 
 use Symfony\Component\HttpFoundation\Request;
 
 use Buzz\Browser;
 
-class OAuth2Provider
+class OAuth2Provider extends OAuthProvider
 {
-    protected $clientId;
-
-    protected $secretId;
-
     protected $scope;
 
     protected $authorizeUri;
 
     protected $accessTokenUri;
-
-    protected $browser;
-
-    public function __construct($clientId, $secretId)
-    {
-        $this->clientId = $clientId;
-        $this->secretId = $secretId;
-    }
-
-    public function setBrowser(Browser $browser)
-    {
-        $this->browser = $browser;
-    }
-
+    
     public function setScope($scope)
     {
         $this->scope = $scope;
     }
 
-    public function getAuthorizeUri($redirectUri)
+    public function getAuthorizeUri(Request $request, $redirectUri)
     {
         return $this->authorizeUri.'?'.http_build_query(array(
             'client_id' => $this->clientId,

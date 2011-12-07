@@ -1,3 +1,13 @@
+# Bundle OAuth
+
+Provider:
+
+- Github (Benji07OAuthFacebookBundle)
+- Facebook (Benji07OAuthFacebookBundle)
+
+
+## Installation
+
 OauthBundle
 OAuthManager
 OAuthProvider
@@ -42,3 +52,23 @@ access token = https://github.com/login/oauth/access_token
 Workflow:
 
 provider->getAuthorizeURL()
+
+Exemple:
+
+<?php
+
+namespace Benji07\Bundle\OAuthGithubBundle\Provider;
+
+use Benji07\Bundle\OAuthBundle\Provider\OAuth2Provider
+
+class GithubProvider extends OAuth2Provider
+{
+    protected $authorizeUri = 'https://github.com/login/oauth/authorize';
+
+    protected $accessTokenUri = 'https://github.com/login/oauth/access_token';
+
+    public function getName()
+    {
+        return 'github';
+    }
+}

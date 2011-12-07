@@ -79,7 +79,7 @@ class AuthController extends Controller
             'name' => $name,
             'referer' => $referer), true);
 
-        return $this->redirect($provider->getAuthorizeUri($redirect));
+        return $this->redirect($provider->getAuthorizeUri($this->getRequest(), $redirect));
     }
 
     /**
