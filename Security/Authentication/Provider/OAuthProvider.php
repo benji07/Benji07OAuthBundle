@@ -59,7 +59,7 @@ class OAuthProvider implements AuthenticationProviderInterface
         $provider = $this->manager->getProvider($name);
 
         if (null == $provider) {
-            throw new \RuntimeException(strtr('The provider %name% does not exist', array('%name%' => $name));
+            throw new \RuntimeException(strtr('The provider %name% does not exist', array('%name%' => $name)));
         }
 
         $token = null;
