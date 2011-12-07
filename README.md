@@ -1,74 +1,49 @@
 # Bundle OAuth
 
-Provider:
+## Step 1: Download Benji07OAuthBundle
 
-- Github (Benji07OAuthFacebookBundle)
-- Facebook (Benji07OAuthFacebookBundle)
+Add the following lines in your `deps` file:
 
+```
+[Benji07OAuthBundle]
+git=git://github.com/Benji07/Benji07OAuthBundle.git
+target=bundles/Benji07/Bundle/OAuthBundle
+```
 
-## Installation
+Now, run the vendors script to download the bundle:
 
-OauthBundle
-OAuthManager
-OAuthProvider
-OAuthFacebookProvider
+``` bash
+$ php bin/vendors install
+```
 
-Séparer le code en plusieurs bundle
-1 par provider. + 1 principal
+### Step 2: Configure the Autoloader
 
-Méthode à implémenter :
-- login
-- link
-- unlink
-- register (avec gestion d'une étape)
-- gestion des permissions (request permission)
+Add the `Benji07` namespace to your autoloader:
 
+``` php
+// app/autoload.php
 
-manager::register(provider)
+$loader->registerNamespaces(array(
+    // ...
+    'Benji07' => __DIR__.'/../vendor/bundles',
+));
+```
 
-gestion de la persistance
+### Step 3: Enable the bundle
 
-http://tools.ietf.org/pdf/draft-ietf-oauth-v2-22.pdf
+```php
+// app/AppKernel.php
 
-Architecture:
-- manager
-- provider (twitter, github,...)
-- consumer (buzz,...)
-- persister(orm, odm, propel)
-- user interface
-
-manager->get(provider)->requestToken(URL)
-->accessToken
-
-
-Github (OAuth2)
-
-client_id = 6d232f2c63e383cc52a0
-secret = 51a0f83bb91d6e60cac83bae35974f825fb8b5df
-
-authorize url = https://github.com/login/oauth/authorize
-access token = https://github.com/login/oauth/access_token
-
-Workflow:
-
-provider->getAuthorizeURL()
-
-Exemple:
-
-<?php
-
-namespace Benji07\Bundle\OAuthGithubBundle\Provider;
-
-use Benji07\Bundle\OAuthBundle\Provider\OAuth2Provider
-
-class GithubProvider extends OAuth2Provider
+public function registerBundles()
 {
-    protected $authorizeUri = 'https://github.com/login/oauth/authorize';
-
-    protected $accessTokenUri = 'https://github.com/login/oauth/access_token';
-
-    public function getName()
-    {
-        return 'github';
-    }
+    $bundles = array(
+        // ...
+        new FOS\UserBundle\FOSUserBundle(),
+    );
 }
+```
+### Step 4: Add providers class
+
+### Step 5: Configure your application's security.yml
+
+### Step 6: Configure the Benji07OAuthBundle
