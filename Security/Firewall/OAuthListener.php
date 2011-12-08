@@ -21,7 +21,6 @@ class OAuthListener extends AbstractAuthenticationListener
      */
     public function attemptAuthentication(Request $request)
     {
-        $this->authenticationManager->setRequest($request);
         return $this->authenticationManager->authenticate(new OAuthToken);
     }
 }

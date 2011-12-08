@@ -12,6 +12,7 @@
     <services>
         <service id="benji07.oauth.security.provider" class="%benji07.oauth.security.provider.class%" public="false">
             <argument type="service" id="benji07.oauth.manager"></argument>
+            <argument type="service" id="service_container"></argument>
         </service>
 
         <service id="benji07.oauth.security.listener" 

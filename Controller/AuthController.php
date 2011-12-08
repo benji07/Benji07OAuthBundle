@@ -20,6 +20,16 @@ class AuthController extends Controller
 {
 
     /**
+     * Secure action
+     *
+     * @Route("/oauth/secure", name="oauth_secure")
+     *
+     */
+    public function secureAction()
+    {
+    }
+
+    /**
      * Login action
      *
      * @param string $name provider name
@@ -30,30 +40,16 @@ class AuthController extends Controller
      */
     public function loginAction($name)
     {
-        $referer = $this->getRequest()->server->get('HTTP_REFERER', '/');
-
-        if ($this->get('security.context')->isGranted('IS_AUTHENTICATED_FULLY')) {
-            return $this->redirect($referer);
-        }
+        $referer = $this->getRequest()->server->get('HTTP_REFERER');
 
         $redirect = $this->generateUrl('oauth_secure', array(
             'name' => $name,
             'referer' => $referer
         ), true);
 
-        return $this->redirect($provider->getAuthorizeUri($redirect));
-    }
+        $provider = $this->get('benji07.oauth.manager')->getProvider($name);
 
-    /**
-     * Secure action
-     *
-     * @param string $name provider name
-     *
-     * @Route("/oauth/{name}/secure", name="oauth_secure")
-     *
-     */
-    public function secureAction($name)
-    {
+        return $this->redirect($provider->getAuthorizeUri($this->getRequest(), $redirect));
     }
 
     /**

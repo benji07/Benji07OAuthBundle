@@ -12,6 +12,12 @@ use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 
 use Benji07\Bundle\OAuthBundle\OAuthManager;
 
+use Symfony\Component\Security\Core\User\UserInterface;
+
+use Symfony\Component\DependencyInjection\Container;
+
+
+
 /**
  * Security OAuth Provider
  */
@@ -24,21 +30,23 @@ class OAuthProvider implements AuthenticationProviderInterface
     /**
      * __construct
      *
-     * @param OAuthManager $manager the oauth maanger
+     * @param OAuthManager $manager   the oauth maanger
+     * @param Container    $container container
      */
-    public function __construct(OAuthManager $manager)
+    public function __construct(OAuthManager $manager, $container)
     {
         $this->manager = $manager;
+        $this->container = $container;
     }
 
     /**
-     * Set Request
+     * Get Request
      *
-     * @param Request $request the request
+     * @return Request
      */
-    public function setRequest(Request $request)
+    public function getRequest()
     {
-        $this->request = $request;
+        return $this->container->get('request');
     }
 
     /**
@@ -54,7 +62,7 @@ class OAuthProvider implements AuthenticationProviderInterface
             return null;
         }
 
-        $name = $request->query->get('name');
+        $name = $this->getRequest()->query->get('name');
 
         $provider = $this->manager->getProvider($name);
 
@@ -65,14 +73,14 @@ class OAuthProvider implements AuthenticationProviderInterface
         $token = null;
 
         try {
-            $token = $provider->getAccessToken($this->request);
+            $token = $provider->getAccessToken($this->getRequest(), $this->getRequest()->query->get('referer'));
         } catch (\Exception $e) {
             // user denied
             return null;
         }
 
         // find user
-        $user = $provider->getUserManager()->findUser($provider, $token);
+        $user = $this->manager->getUserManager()->findUser($provider, $token);
 
         if (null === $user) {
             // if user doesn't exist throw exception

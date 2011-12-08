@@ -6,6 +6,8 @@ use Buzz\Browser;
 
 use Benji07\Bundle\OAuthBundle\Provider\OAuthProvider;
 
+use Benji07\Bundle\OAuthBundle\UserManager\UserManagerInterface;
+
 /**
  * OAuth Manager
  */
@@ -54,7 +56,7 @@ class OAuthManager
             return $this->providers[$name];
         }
 
-        return null;
+        throw new \Exception(strtr('The provider %name% does not exist', array('%name%' => $name)));
     }
 
     /**

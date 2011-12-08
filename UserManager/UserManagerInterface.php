@@ -4,7 +4,7 @@ namespace Benji07\Bundle\OAuthBundle\UserManager;
 
 use Benji07\Bundle\OAuthBundle\Provider\OAuthProvider;
 
-Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * UserManager Interface

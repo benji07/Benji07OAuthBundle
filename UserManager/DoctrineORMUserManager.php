@@ -2,6 +2,10 @@
 
 namespace Benji07\Bundle\OAuthBundle\UserManager;
 
+use Benji07\Bundle\OAuthBundle\Provider\OAuthProvider;
+
+use Symfony\Component\Security\Core\User\UserInterface;
+
 use Doctrine\ORM\EntityManager;
 
 use Doctrine\Common\Util\Inflector;
@@ -9,7 +13,7 @@ use Doctrine\Common\Util\Inflector;
 /**
  * UserManager for DoctrineORM
  */
-class DotrineORMUserManager implements UserManagerInterface
+class DoctrineORMUserManager implements UserManagerInterface
 {
     private $em;
 
@@ -19,9 +23,9 @@ class DotrineORMUserManager implements UserManagerInterface
      * __construct
      *
      * @param array         $options the options
-     * @param EntityManager $em    the entity manager
+     * @param EntityManager $em      the entity manager
      */
-    public function __construct(array $options = array(), EntityManager $em)
+    public function __construct(array $options, EntityManager $em)
     {
         $this->em = $em;
 
