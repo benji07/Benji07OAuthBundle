@@ -60,6 +60,21 @@ Examples providers are available in bundle Benji07OAuthGithubBundle, Benji07OAut
 
 ### Step 5: Configure your application's security.yml
 
+```yml
+security:
+
+    factories:
+        - %kernel.root_dir%/../vendors/bundles/Benji07/Bundle/OAuthBundle/Resources/config/security_factories.xml
+
+    firewalls:
+        main:
+            pattern: ^/
+            oauth:
+                check_path: /oauth/secure
+```
+
+You can add a failure handler if you want to create user if none match the access token.
+
 ### Step 6: Configure the Benji07OAuthBundle
 
 ```
