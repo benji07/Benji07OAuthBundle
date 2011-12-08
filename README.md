@@ -1,6 +1,6 @@
 # Bundle Benji07OAuthBundle
 
-This bundles is **Work in progress**
+This bundle is **Work in progress**
 
 Currently this bundle only Support OAuth2.0
 
@@ -64,7 +64,8 @@ Examples providers are available in bundle Benji07OAuthGithubBundle, Benji07OAut
 
 ```
 benji07_o_auth:
-    user_manager: benji07.oauth.usermanager.doctrine_orm
-    user_manager_options:
-        class: Acme\UserBundle\Entity\User
+    user_manager:
+        id: benji07.oauth.usermanager.doctrine_orm
+        options:
+            class: Acme\UserBundle\Entity\User
 ```

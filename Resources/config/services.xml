@@ -6,14 +6,21 @@
 
     <parameters>
         <parameter key="benji07.oauth.manager.class">Benji07\Bundle\OAuthBundle\OAuthManager</parameter>
+        <parameter key="benji07.oauth.user_manager.doctrine_orm.class">Benji07\Bundle\OAuthBundle\UserManager\DoctrineORMUserManager</parameter>
     </parameters>
     
     <services>
         <service id="benji07.oauth.manager" class="%benji07.oauth.manager.class%">
             <argument type="service" id="buzz_browser" />
+            <argument type="service"></argument>
         </service>
 
         <service id="buzz_browser" class="Buzz\Browser"></service>
+
+        <service id="benji07.oauth.user_manager.doctrine_orm" class="%benji07.oauth.user_manager.doctrine_orm.class%">
+            <argument type="collection" /> <!-- options -->
+            <argument type="service" id="doctrine.orm.entity_manager" />
+        </service>
 
         <service id="benji07.oauth.provider.github" class="Benji07\Bundle\OAuthBundle\GithubProvider">
             <tag name="benji07.oauth.provider"/>

@@ -7,6 +7,8 @@ use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
 
+use Symfony\Component\DependencyInjection\Reference;
+
 /**
  * Benji07OAuth Extension
  */
@@ -20,7 +22,18 @@ class Benji07OAuthExtension extends Extension
      */
     public function load(array $configs, ContainerBuilder $container)
     {
+        $configuration = new Configuration();
+        $config = $this->processConfiguration($configuration, $configs);
+
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
+        $loader->load('security.xml');
+
+        $definition = $container->getDefinition('benji07.oauth.manager');
+        $definition->replaceArgument(1, new Reference($config['user_manager']['id']));
+
+        $definition = $container->getDefinition($config['user_manager']['id']);
+
+        $definition->replaceArgument(0, $config['user_manager']['options']);
     }
 }

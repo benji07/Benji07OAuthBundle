@@ -18,14 +18,14 @@ class DotrineORMUserManager implements UserManagerInterface
     /**
      * __construct
      *
+     * @param array         $options the options
      * @param EntityManager $em    the entity manager
-     * @param string        $class the user class
      */
-    public function __construct(EntityManager $em, $class)
+    public function __construct(array $options = array(), EntityManager $em)
     {
         $this->em = $em;
 
-        $this->class = $class;
+        $this->class = $options['class'];
     }
 
     /**

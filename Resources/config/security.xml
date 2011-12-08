@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="benji07.oauth.security.provider.class">Benji07\Bundle\OAuthBundle\Security\Authentication\Provider\OAuthProvider</parameter>
+        <parameter key="benji07.oauth.security.listener.class">Benji07\Bundle\OAuthBundle\Security\Firewall\OAuthListener</parameter>
+    </parameters>
+
+    <services>
+        <service id="benji07.oauth.security.provider" class="%benji07.oauth.security.provider.class%" public="false">
+            <argument type="service" id="benji07.oauth.manager"></argument>
+        </service>
+
+        <service id="benji07.oauth.security.listener" 
+                 class="%benji07.oauth.security.listener.class%" 
+                 parent="security.authentication.listener.abstract" 
+                 abstract="true"></service>
+    </services>
+
+</container>
