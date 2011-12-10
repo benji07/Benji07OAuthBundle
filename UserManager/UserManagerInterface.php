@@ -41,4 +41,14 @@ interface UserManagerInterface
      * @throw \Exception if we can't unlink the user
      */
     function unlink(OAuthProvider $provider, UserInterface $user);
+
+    /**
+     * Check if the user is likn with the provider
+     *
+     * @param OAuthProvider $provider the provider
+     * @param UserInterface $user     the user
+     *
+     * @return boolean
+     */
+    function isLink(OAuthProvider $provider, UserInterface $user);
 }

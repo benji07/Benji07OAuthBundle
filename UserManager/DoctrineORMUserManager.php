@@ -99,4 +99,19 @@ class DoctrineORMUserManager implements UserManagerInterface
         $this->em->persist($user);
         $this->em->flush();
     }
+
+    /**
+     * Check if the user is likn with the provider
+     *
+     * @param OAuthProvider $provider the provider
+     * @param UserInterface $user     the user
+     *
+     * @return boolean
+     */
+    public function isLink(OAuthProvider $provider, UserInterface $user)
+    {
+        $method = 'get' . Inflector::classify($provider->getIdColumn());
+
+        return null !== $user->{$method}();
+    }
 }
