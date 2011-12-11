@@ -54,11 +54,8 @@ public function registerBundles()
     );
 }
 ```
-### Step 4: Add providers class
 
-Examples providers are available in bundle Benji07OAuthGithubBundle, Benji07OAuthFacebookBundle and Benji07OAuthTwiterBundle
-
-### Step 5: Configure your application's security.yml
+### Step 4: Configure your application's security.yml
 
 ```yml
 security:
@@ -75,7 +72,7 @@ security:
 
 You can add a failure handler if you want to create user if none match the access token.
 
-### Step 6: Configure the Benji07OAuthBundle
+### Step 5: Configure the Benji07OAuthBundle
 
 ```
 benji07_o_auth:
@@ -84,3 +81,41 @@ benji07_o_auth:
         options:
             class: Acme\UserBundle\Entity\User
 ```
+
+### Step 6: Create or add providere
+
+```php
+<?php
+
+namespace Benji07\Bundle\OAuthGithubBundle\Provider;
+
+use Benji07\Bundle\OAuthBundle\Provider\OAuth2Provider;
+
+use Benji07\Bundle\OAuthGithubBundle\Api\GithubApi;
+
+class GithubProvider extends OAuth2Provider
+{
+    protected $authorizeUri = 'https://github.com/login/oauth/authorize';
+
+    protected $accessTokenUri = 'https://github.com/login/oauth/access_token';
+
+    public function getName()
+    {
+        return 'github';
+    }
+}
+```
+
+Register the provider using the tag `benji07.oauth.provider`
+
+```xml
+<service id="benji07.oauth.provider.github" class="%benji07.oauth.provider.github.class%">
+    <tag name="benji07.oauth.provider"/>
+    <argument>%benji07.oauth.provider.github.key%</argument>
+    <argument>%benji07.oauth.provider.github.secret%</argument>
+</service>
+```
+
+### Step 7 Add columns for each provider you register
+
+For OAuth2 Providers you need to add one column `providerNameToken`, for version 1.0a you need to add 2 column `providerNameToken` and `providerNameSecret`

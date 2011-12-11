@@ -67,13 +67,25 @@ abstract class OAuthProvider
     abstract public function getName();
 
     /**
+     * Get Api
+     *
+     * @param string|array $token the user token
+     *
+     * @return object
+     */
+    public function getApi($token)
+    {
+        throw new \Exception('No api defined for this provider');
+    }
+
+    /**
      * Get Id Column
      *
      * @return string
      */
     public function getIdColumn()
     {
-        return $this->getName() . '_token';
+        return $this->getName() . 'Token';
     }
 
     /**

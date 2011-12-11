@@ -63,7 +63,7 @@ abstract class OAuth1aProvider extends OAuthProvider
     {
         return array(
             $this->getIdColumn(),
-            $this->getName() . '_secret'
+            $this->getName() . 'Secret'
         );
     }
 }
