@@ -76,7 +76,7 @@ class OAuthProvider implements AuthenticationProviderInterface
             $token = $provider->getAccessToken($this->getRequest(), $this->getRequest()->query->get('referer'));
         } catch (\Exception $e) {
             // user denied
-            return null;
+            throw new \RuntimeException($e->getMessage());
         }
 
         // find user
