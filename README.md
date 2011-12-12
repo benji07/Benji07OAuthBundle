@@ -2,8 +2,6 @@
 
 This bundle is **Work in progress**
 
-Currently this bundle only Support OAuth2.0
-
 With this bundle, your user can login, link and unlink they account.
 
 This bundle is only compatible with Doctrine ORM
@@ -114,6 +112,28 @@ Register the provider using the tag `benji07.oauth.provider`
     <argument>%benji07.oauth.provider.github.key%</argument>
     <argument>%benji07.oauth.provider.github.secret%</argument>
 </service>
+```
+
+Or if you're using OAuth 1.0a
+
+```php
+<?php
+
+namespace Benji07\Bundle\OAuthBundle\Provider;
+
+class OAuthTwitterProvider extends OAuth1aProvider
+{
+    public $requestTokenUrl = 'https://api.twitter.com/oauth/request_token';
+
+    public $authorizeUrl = 'https://api.twitter.com/oauth/authorize';
+
+    public $accessTokenUrl = 'https://api.twitter.com/oauth/access_token';
+
+    public function getName()
+    {
+        return 'twitter';
+    }
+}
 ```
 
 ### Step 7 Add columns for each provider you register
