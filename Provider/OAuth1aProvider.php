@@ -19,11 +19,11 @@ use Benji07\Bundle\OAuthBundle\OAuth\Signature\HMACSHA1Method;
 abstract class OAuth1aProvider extends OAuthProvider
 {
 
-    public $requestTokenUrl;
+    protected $requestTokenUrl;
 
-    public $authorizeUrl;
+    protected $authorizeUrl;
 
-    public $accessTokenUrl;
+    protected $accessTokenUrl;
 
     /**
      * Get Authorize uri

@@ -7,6 +7,7 @@
     <parameters>
         <parameter key="benji07.oauth.manager.class">Benji07\Bundle\OAuthBundle\OAuthManager</parameter>
         <parameter key="benji07.oauth.user_manager.doctrine_orm.class">Benji07\Bundle\OAuthBundle\UserManager\DoctrineORMUserManager</parameter>
+        <parameter key="benji07.oauth.user_manager.propel.class">Benji07\Bundle\OAuthBundle\UserManager\PropelUserManager</parameter>
     </parameters>
     
     <services>
@@ -20,6 +21,10 @@
         <service id="benji07.oauth.user_manager.doctrine_orm" class="%benji07.oauth.user_manager.doctrine_orm.class%">
             <argument type="collection" /> <!-- options -->
             <argument type="service" id="doctrine.orm.entity_manager" />
+        </service>
+
+        <service id="benji07.oauth.user_manager.propel" class="%benji07.oauth.user_manager.propel.class%">
+            <argument type="collection" /> <!-- options -->
         </service>
     </services>
     
