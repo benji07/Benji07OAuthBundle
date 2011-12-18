@@ -12,6 +12,8 @@ use Doctrine\Common\Util\Inflector;
 
 /**
  * UserManager for DoctrineORM
+ *
+ * @author Benjamin Lévêque <benjamin@leveque.me>
  */
 class DoctrineORMUserManager implements UserManagerInterface
 {

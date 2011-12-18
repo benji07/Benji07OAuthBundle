@@ -8,6 +8,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * UserManager Interface
+ *
+ * @author Benjamin Lévêque <benjamin@leveque.me>
  */
 interface UserManagerInterface
 {

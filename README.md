@@ -4,7 +4,7 @@ This bundle is **Work in progress**
 
 With this bundle, your user can login, link and unlink they account.
 
-This bundle is only compatible with Doctrine ORM
+This bundle support both Doctrine ORM and Propel
 
 ## Installation
 
@@ -79,6 +79,18 @@ benji07_o_auth:
         options:
             class: Acme\UserBundle\Entity\User
 ```
+
+or for propel
+
+```
+benji07_o_auth:
+    user_manager:
+        id: benji07.oauth.usermanager.propel
+        options:
+            class: User
+```
+
+Internaly the propel user manager use PropelQuery::from($options['class'])
 
 ### Step 6: Create or add providere
 

@@ -10,6 +10,8 @@ use Symfony\Bundle\SecurityBundle\DependencyInjection\Security\Factory\AbstractF
 
 /**
  * OAuth Security Factory
+ *
+ * @author Benjamin Lévêque <benjamin@leveque.me>
  */
 class OAuthFactory extends AbstractFactory
 {

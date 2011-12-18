@@ -12,6 +12,8 @@ use Doctrine\Common\Util\Inflector;
 
 /**
  * UserManager for Propel
+ *
+ * @author Benjamin Lévêque <benjamin@leveque.me>
  */
 class PropelUserManager implements UserManagerInterface
 {

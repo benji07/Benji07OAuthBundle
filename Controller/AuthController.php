@@ -15,6 +15,8 @@ use Benji07\Bundle\OAuthBundle\FacebookProvider;
 
 /**
  * Benji07 OAuth AuthController
+ *
+ * @author Benjamin Lévêque <benjamin@leveque.me>
  */
 class AuthController extends Controller
 {

@@ -11,6 +11,8 @@ use Symfony\Component\DependencyInjection\Reference;
 
 /**
  * Benji07OAuth Extension
+ *
+ * @author Benjamin Lévêque <benjamin@leveque.me>
  */
 class Benji07OAuthExtension extends Extension
 {

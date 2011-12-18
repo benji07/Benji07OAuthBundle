@@ -8,6 +8,8 @@ use Buzz\Browser;
 
 /**
  * Base OAuth 2.0 Provider
+ *
+ * @author Benjamin Lévêque <benjamin@leveque.me>
  */
 abstract class OAuthProvider
 {

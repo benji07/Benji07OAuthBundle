@@ -15,6 +15,8 @@ use Benji07\Bundle\OAuthBundle\OAuth\Signature\HMACSHA1Method;
 
 /**
  * OAuth 1.0a Provider
+ *
+ * @author Benjamin Lévêque <benjamin@leveque.me>
  */
 abstract class OAuth1aProvider extends OAuthProvider
 {

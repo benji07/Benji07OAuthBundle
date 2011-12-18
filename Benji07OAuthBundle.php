@@ -10,6 +10,8 @@ use Benji07\Bundle\OAuthBundle\DependencyInjection\Compiler\AddProvidersPass;
 
 /**
  * Benji07 OAuth Bundle
+ *
+ * @author Benjamin Lévêque <benjamin@leveque.me>
  */
 class Benji07OAuthBundle extends Bundle
 {

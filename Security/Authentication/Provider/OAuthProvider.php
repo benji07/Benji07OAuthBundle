@@ -20,6 +20,8 @@ use Symfony\Component\DependencyInjection\Container;
 
 /**
  * Security OAuth Provider
+ *
+ * @author Benjamin Lévêque <benjamin@leveque.me>
  */
 class OAuthProvider implements AuthenticationProviderInterface
 {

@@ -10,6 +10,8 @@ use Benji07\Bundle\OAuthBundle\UserManager\UserManagerInterface;
 
 /**
  * OAuth Manager
+ *
+ * @author Benjamin Lévêque <benjamin@leveque.me>
  */
 class OAuthManager
 {

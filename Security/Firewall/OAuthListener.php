@@ -9,6 +9,8 @@ use Benji07\Bundle\OAuthBundle\Security\Authentication\Token\OAuthToken;
 
 /**
  * Security OAuth Listener
+ *
+ * @author Benjamin Lévêque <benjamin@leveque.me>
  */
 class OAuthListener extends AbstractAuthenticationListener
 {

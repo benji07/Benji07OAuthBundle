@@ -6,6 +6,8 @@ use Symfony\Component\Security\Core\Authentication\Token\AbstractToken;
 
 /**
  * The OAuth Token
+ *
+ * @author Benjamin Lévêque <benjamin@leveque.me>
  */
 class OAuthToken extends AbstractToken
 {

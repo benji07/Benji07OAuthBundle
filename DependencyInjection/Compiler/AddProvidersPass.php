@@ -8,6 +8,8 @@ use Symfony\Component\DependencyInjection\Reference;
 
 /**
  * Add Provider pass
+ *
+ * @author Benjamin Lévêque <benjamin@leveque.me>
  */
 class AddProvidersPass implements CompilerPassInterface
 {
