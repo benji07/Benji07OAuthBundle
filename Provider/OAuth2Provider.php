@@ -56,7 +56,7 @@ abstract class OAuth2Provider extends OAuthProvider
     public function getAccessToken(Request $request, $redirectUri)
     {
         if ($request->query->has('error')) {
-            throw new \Exception('We could not link your %provider% account');
+            throw new \Exception(strtr('We could not link your %provider% account', array('%name%' => $this->getName())));
         }
 
         $code = $request->query->get('code');

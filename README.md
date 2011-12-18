@@ -13,9 +13,17 @@ This bundle support both Doctrine ORM and Propel
 Add the following lines in your `deps` file:
 
 ```
+[Buzz]
+    git=https://github.com/kriswallsmith/Buzz.git
+    version=v0.5
+
+[BuzzBundle]
+    git=https://github.com/sensio/SensioBuzzBundle.git
+    target=/bundles/Sensio/Bundle/BuzzBundle
+
 [Benji07OAuthBundle]
-git=git://github.com/Benji07/Benji07OAuthBundle.git
-target=bundles/Benji07/Bundle/OAuthBundle
+    git=git://github.com/Benji07/Benji07OAuthBundle.git
+    target=bundles/Benji07/Bundle/OAuthBundle
 ```
 
 Now, run the vendors script to download the bundle:
@@ -35,6 +43,7 @@ Add the `Benji07` namespace to your autoloader:
 $loader->registerNamespaces(array(
     // ...
     'Benji07' => __DIR__.'/../vendor/bundles',
+    'Buzz' => __DIR__.'/../vendor/Buzz/lib/',
 ));
 ```
 
@@ -49,6 +58,7 @@ public function registerBundles()
     $bundles = array(
         // ...
         new Benji07\Bundle\OAuthBundle\Benji07OAuthBundle(),
+        new Sensio\Bundle\BuzzBundle\SensioBuzzBundle(),
     );
 }
 ```

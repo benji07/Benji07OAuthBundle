@@ -12,11 +12,9 @@
     
     <services>
         <service id="benji07.oauth.manager" class="%benji07.oauth.manager.class%">
-            <argument type="service" id="buzz_browser" />
+            <argument type="service" id="buzz" />
             <argument></argument>
         </service>
-
-        <service id="buzz_browser" class="Buzz\Browser"></service>
 
         <service id="benji07.oauth.user_manager.doctrine_orm" class="%benji07.oauth.user_manager.doctrine_orm.class%">
             <argument type="collection" /> <!-- options -->
