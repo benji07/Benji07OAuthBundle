@@ -68,9 +68,6 @@ public function registerBundles()
 ```yml
 security:
 
-    factories:
-        - %kernel.root_dir%/../vendors/bundles/Benji07/Bundle/OAuthBundle/Resources/config/security_factories.xml
-
     firewalls:
         main:
             pattern: ^/
