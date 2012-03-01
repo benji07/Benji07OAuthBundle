@@ -47,7 +47,7 @@ class PropelUserManager implements UserManagerInterface
 
         $method = 'filterBy' . Inflector::classify($provider->getIdColumn());
 
-        $user = PropelQuery::from($this->class)->$method($token)->findOne()
+        $user = PropelQuery::from($this->class)->$method($token)->findOne();
 
         return $user;
     }
