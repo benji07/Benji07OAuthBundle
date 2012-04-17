@@ -17,9 +17,9 @@ use Doctrine\Common\Util\Inflector;
  */
 class DoctrineORMUserManager implements UserManagerInterface
 {
-    private $em;
+    protected $em;
 
-    private $class;
+    protected $class;
 
     /**
      * __construct
